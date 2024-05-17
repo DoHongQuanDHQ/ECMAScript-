@@ -1,7 +1,8 @@
 function sum(...args) {
+  let tong = 0;
   for (let i = 0; i < args.length; i++) {
     const sum = args[i];
-    tong += args;
+    tong = tong + args;
   }
   return tong;
 }
