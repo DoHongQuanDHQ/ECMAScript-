@@ -3,18 +3,19 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header>
+      <div className="logo"></div>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Trang Chủ</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about">Giới Thiệu</Link>
         </li>
         <li>
-          <Link to="/shop">Shop</Link>
+          <Link to="/shop">Sản Phẩm</Link>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login">Liên Hệ</Link>
         </li>
       </ul>
     </header>

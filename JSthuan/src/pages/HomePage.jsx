@@ -1,20 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HomePage({ products }) {
-  console.log(products);
   return (
     <>
-      <h1>San pham ban chay</h1>
+      <h1>Sản phẩm nổi bật</h1>
       <div className="row">
         {products.map((p) => (
-          <div className="col-4">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={p.id}>
             <div className="card">
-              <img src={p.thumbnail} alt={p.name} />
+              <Link to={`/product-detail/${p.id}`}>
+                <img src={p.thumbnail} alt={p.name} />
+              </Link>
               <div className="content">
                 <h2>{p.title}</h2>
                 <p>Gia: {p.price}</p>
                 <button className="btn btn-primary w-100">Mua ngay</button>
-                <button className="btn btn-danger w-100">Xem chi tiet</button>
+                <Link
+                  to={`/product-detail/${p.id}`}
+                  className="btn btn-danger w-100"
+                >
+                  Xem chi tiet
+                </Link>
               </div>
             </div>
           </div>
