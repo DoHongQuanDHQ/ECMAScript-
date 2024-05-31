@@ -15,6 +15,7 @@ const Index = ({ data, username }) => {
           <tr>
             <th>ID</th>
             <th>Title</th>
+            <th>Image</th>
             <th>Price</th>
             <th>Description</th>
             <th>Action</th>
@@ -25,10 +26,18 @@ const Index = ({ data, username }) => {
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>{product.title}</td>
+              <td>
+                <img src={product.thumbnail} alt="" />
+              </td>
               <td>{product.price}</td>
               <td>{product.description}</td>
               <td>
-                <button className="btn btn-warning">Edit</button>
+                <Link
+                  to={`/admin/product-form/${product.id}`}
+                  className="btn btn-warning"
+                >
+                  Edit
+                </Link>
                 <button className="btn btn-danger">Remove</button>
               </td>
             </tr>
