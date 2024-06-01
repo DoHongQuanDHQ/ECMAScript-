@@ -38,7 +38,12 @@ const Index = ({ data, username }) => {
                 >
                   Edit
                 </Link>
-                <button className="btn btn-danger">Remove</button>
+                <Link
+                  to={`/admin/product-delete/${product.id}`}
+                  className="btn btn-danger"
+                >
+                  Remove
+                </Link>
               </td>
             </tr>
           ))}

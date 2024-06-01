@@ -74,6 +74,17 @@ function App() {
       }
     })();
   };
+  const handleRemove = (id) => {
+    (async () => {
+      try {
+        await instance.delete(`/products/${id}`);
+        const newData = products.filter((p) => p.id !== id);
+        setProducts(newData);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
   return (
     <>
       <Header />
@@ -93,7 +104,7 @@ function App() {
           />
           <Route
             path="/admin/product-edit"
-            element={<ProductEdit onAdd={handleSubmit} />}
+            element={<ProductEdit onAdd={handleSubmitEdit} />}
           />
           <Route
             path="/admin/product-form"
