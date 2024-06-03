@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // ! props = propeties = Những thuộc tính
-const Index = ({ data, username }) => {
+const Index = ({ data, removeProduct }) => {
   console.log(data);
   return (
     <>
-      <h1>Hello, {username}</h1>
+      <h1>Hello, Admin</h1>
       <Link to="/admin/product-add" className="btn btn-primary">
         Add
       </Link>
@@ -38,12 +38,12 @@ const Index = ({ data, username }) => {
                 >
                   Edit
                 </Link>
-                <Link
-                  to={`/admin/product-delete/${product.id}`}
+                <button
+                  onClick={() => removeProduct(product.id)}
                   className="btn btn-danger"
                 >
                   Remove
-                </Link>
+                </button>
               </td>
             </tr>
           ))}

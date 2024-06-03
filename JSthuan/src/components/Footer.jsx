@@ -1,5 +1,5 @@
 function Footer() {
-  return <footer>Website by hoangnm62</footer>;
+  return <footer>Website by</footer>;
 }
 
 export default Footer;

@@ -7,12 +7,14 @@ import { Route, Routes } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import ShopPage from "./pages/ShopPage";
 import { useEffect, useState } from "react";
-import instance from "./axios";
+import instance, { getProducts } from "./axios";
 import DetailProduct from "./pages/DetailProduct";
 import ProductAdd from "./pages/admin/ProductAdd";
 import ProductEdit from "./pages/admin/ProductEdit";
 import ProductForm from "./pages/admin/ProductForm";
 import Index from "./pages/admin/Index";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -53,6 +55,23 @@ function App() {
       }
     })();
   };
+  const handleRemove = (id) => {
+    console.log(id);
+    // ! BTVN: Code logic xoá sản phẩm có confirm vào đây.
+    // ! Xoá xong cập nhật lại danh sách sản phẩm.
+    (async () => {
+      try {
+        if (confirm("Are you sure?")) {
+          await instance.delete(`/products/${id}`);
+          const newData = products.filter((item) => item.id !== id && item);
+          setProducts(newData);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    console.log(data);
+  };
   const handleSubmitForm = (data) => {
     (async () => {
       try {
@@ -74,17 +93,7 @@ function App() {
       }
     })();
   };
-  const handleRemove = (id) => {
-    (async () => {
-      try {
-        await instance.delete(`/products/${id}`);
-        const newData = products.filter((p) => p.id !== id);
-        setProducts(newData);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  };
+
   return (
     <>
       <Header />
@@ -94,13 +103,19 @@ function App() {
           <Route path="/product-detail/:id" element={<DetailProduct />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/admin"
-            element={<Index data={products} username="Nguyen Van Admin" />}
+            element={<Index data={products} removeProduct={handleRemove} />}
           />
           <Route
             path="/admin/product-add"
             element={<ProductAdd onAdd={handleSubmit} />}
+          />
+          <Route
+            path="/admin"
+            element={<Index data={products} removeProduct={handleRemove} />}
           />
           <Route
             path="/admin/product-edit"

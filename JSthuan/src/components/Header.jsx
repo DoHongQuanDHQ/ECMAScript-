@@ -17,6 +17,9 @@ function Header() {
         <li>
           <Link to="/login">Liên Hệ</Link>
         </li>
+        <li>
+          <Link to="/register">Đăng Ký</Link>
+        </li>
       </ul>
     </header>
   );
