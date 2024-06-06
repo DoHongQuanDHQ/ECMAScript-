@@ -15,6 +15,7 @@ import ProductForm from "./pages/admin/ProductForm";
 import Index from "./pages/admin/Index";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import AuthForm from "./pages/AuthForm";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -103,8 +104,8 @@ function App() {
           <Route path="/product-detail/:id" element={<DetailProduct />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<AuthForm />} />
+          <Route path="/register" element={<AuthForm isRegister />} />
           <Route
             path="/admin"
             element={<Index data={products} removeProduct={handleRemove} />}
